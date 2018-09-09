@@ -4,12 +4,30 @@
     <title>Tumblr</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar navbar-dark bg-dark d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 fixed-top">
+      <h5 class="my-0 mr-md-auto ">Tumblr</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <%= link_to "Make Post", new_post_path , class:"btn btn-outline-success"%>
+        <%= link_to "Sign up", root_path , class:"btn btn-outline-primary"%>
+      </nav>
+    </div>
+    <section>
+      <div class="container">
+          <div class="row body">
+            <div class="col-sm-9">
+              <%= yield %>
+            </div>
+            <div class="col-sm-3 sidenav">
+              <%= render 'partials/sidebar' %>
+            </div>
+          </div>
+      </div>
+    </section>
+    <%= render 'partials/footer'%>
   </body>
 </html>

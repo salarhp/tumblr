@@ -11,15 +11,19 @@
   <body>
     <div class="navbar navbar-dark bg-dark d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 fixed-top">
       <h5 class="my-0 mr-md-auto ">Tumblr</h5>
-      <nav class="my-2 my-md-0 mr-md-3">
-        <%= link_to "Make Post", new_post_path , class:"btn btn-outline-success"%>
-        <%= link_to "Sign up", root_path , class:"btn btn-outline-primary"%>
-      </nav>
+      <% if user_signed_in? %>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <%= link_to "Make Post", new_post_path , class:"btn btn-outline-success"%>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete , class:"btn btn-outline-primary"%>
+        </nav>
+      <%end%>
     </div>
     <section>
       <div class="container">
           <div class="row body">
             <div class="col-sm-9">
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
               <%= yield %>
             </div>
             <div class="col-sm-3 sidenav">

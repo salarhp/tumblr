@@ -3,5 +3,7 @@
 <ul class="list-group-item">
     <%= link_to "Posts", root_path , class:"list-group-item list-group-item-action"%>
     <%= link_to "About", about_path , class:"list-group-item list-group-item-action"%>
-    <%= link_to "Login User", root_path , class:"list-group-item list-group-item-action"%>
+    <% if !user_signed_in? %>
+        <%= link_to "Login User", new_user_session_path , class:"list-group-item list-group-item-action"%>
+    <%end%>
 </ul>

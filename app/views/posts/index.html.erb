@@ -1,6 +1,12 @@
 <% @posts.each do |post| %>
     <div class="alert alert-success">
-        <h2 class="title"> <%= link_to post.title,post %> </h2>
+        <h2 class="title">
+        <%if post.title != "" %>
+            <%= link_to post.title,post %>
+        <% else %>
+            <%= link_to "##",post %>
+        <% end %>
+         </h2>
         <p calss="body"><%=truncate(post.body, length:70)%></p>
         <p class="date"><%= time_ago_in_words(post.created_at) %> ago </p>
     </div>
